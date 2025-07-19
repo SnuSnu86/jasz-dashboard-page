@@ -1,0 +1,84 @@
+/* Größere Schriftarten für alle Sidebar-Komponenten */
+
+/* Grundlegende Sidebar-Schriftgröße erhöhen */
+[data-sidebar] * {
+  font-size: 1.0rem !important;
+}
+
+/* Sidebar-Menü-Buttons größer machen */
+[data-sidebar-menu-button] {
+  font-size: 1.1rem !important;
+}
+
+/* Sidebar-Gruppen-Labels größer machen */
+[data-sidebar-group-label] {
+  font-size: 1.15rem !important;
+  font-weight: 600 !important;
+}
+
+/* Sidebar-Menü-Items größer machen */
+[data-sidebar-menu-item] span,
+[data-sidebar-menu-sub-item] span {
+  font-size: 1.05rem !important;
+}
+
+/* Sidebar-Team-Switcher größer machen */
+[data-sidebar-header] button span {
+  font-size: 1.1rem !important;
+}
+
+/* Dashboard-Link größer machen */
+.dashboard-link {
+  font-size: 1.1rem !important;
+}
+.dashboard-link span {
+  font-size: 1.1rem !important;
+}
+
+/* Sidebar-Icons größer machen */
+[data-sidebar] svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
+/* Text in der Sidebar ausblenden, wenn sie eingeklappt ist */
+[data-sidebar][data-collapsible="icon"] span:not(.sr-only),
+[data-state="collapsed"] .dashboard-link span:not(.sr-only),
+.sidebar-collapsed [data-sidebar-content] span,
+.sidebar-collapsed .dashboard-link span,
+.sidebar-collapsed [data-team-switcher] span {
+  display: none !important;
+}
+
+/* Zusätzliche Stile für die Sidebar-Zustände */
+.sidebar-expanded [data-sidebar-content] span,
+.sidebar-expanded .dashboard-link span,
+.sidebar-expanded [data-team-switcher] span {
+  display: inline !important;
+}
+
+/* Anpassungen für das Dashboard-Layout */
+.sidebar-container {
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+}
+
+.content-container {
+  transition: margin-left 0.3s ease-in-out;
+  width: 100%;
+  padding-left: 1rem;
+}
+
+/* Stelle sicher, dass der Inhalt nicht unter der Sidebar liegt */
+@media (min-width: 768px) {
+  .dashboard-header {
+    margin-left: 1rem;
+  }
+}
+
+/* Sicherstellen, dass Icons immer zentriert sind */
+[data-state="collapsed"] .dashboard-link {
+  justify-content: center !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
