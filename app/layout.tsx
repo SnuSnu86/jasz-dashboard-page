@@ -5,8 +5,6 @@ import * as React from "react";
 import { Menu } from "lucide-react";
 // Change to relative path for testing module resolution
 import { DashboardSidebar } from "../components/dashboard/sidebar";
-// Import both dashboard themes für maximale Spezifität
-import "./dashboard-theme.css";
 import styles from "./dashboard-theme.module.css";
 import { Button } from "@/components/ui/button";
 
