@@ -1,11 +1,8 @@
-/* Dashboard-spezifische CSS-Variablen und Stile */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-/* Höhere Spezifität für Dashboard-Theme im Light Mode */
-/* Verwende mehrere Selektoren für höhere Spezifität */
-:root .dashboard-theme,
-:root [data-theme="dashboard"],
-:root html.dashboard-page * {
-  /* HSL-Variablen für den Light Mode */
+:root {
   --background: 0 0% 100%;
   --foreground: 0 0% 3.9%;
   --card: 0 0% 100%;
@@ -31,9 +28,9 @@
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
   --radius: 0.5rem;
-  
-  /* Sidebar-spezifische Variablen */
-  --sidebar: 0 0% 100%;
+
+  /* Sidebar variables */
+  --sidebar: 0 0% 98%;
   --sidebar-foreground: 0 0% 3.9%;
   --sidebar-primary: 0 0% 9%;
   --sidebar-primary-foreground: 0 0% 98%;
@@ -41,86 +38,50 @@
   --sidebar-accent-foreground: 0 0% 9%;
   --sidebar-border: 0 0% 89.8%;
   --sidebar-ring: 0 0% 3.9%;
-  
-  /* Sidebar-Breiten-Variablen */
-  --sidebar-width-expanded: 16rem;
-  --sidebar-width-collapsed: 3rem;
-  --transition-speed: 0.3s;
 }
 
-/* Höhere Spezifität für Dashboard-Theme im Dark Mode */
-/* Verwendet die .dark Klasse am HTML-Element mit verschiedenen Selektoren */
-html.dark .dashboard-theme,
-html.dark [data-theme="dashboard"],
-html.dark.dashboard-page * {
-  /* HSL-Variablen für den Dark Mode */
-  --background: #4b5b63;
-  --foreground: #f8fafc;
-  --card: #32424e; /* Transparenz über rgba in Komponenten anwenden */
-  --card-foreground: #f8fafc;
-  --popover: #020817;
-  --popover-foreground: #f8fafc;
-  --primary: #f8fafc;
-  --primary-foreground: #020817;
-  --secondary: #1e293b;
-  --secondary-foreground: #020817;
-  --muted: #1e293b;
-  --muted-foreground: #94a3b8;
-  --accent: #365063;
-  --accent-foreground: #f8fafc;
-  --destructive: #7f1d1d;
-  --destructive-foreground: #f8fafc;
-  --border: #1e293b;
-  --input: #1e293b;
-  --ring: #cbd5e1;
-  --chart-1: #2662d9;
-  --chart-2: #2eb88a;
-  --chart-3: #e88c30;
-  --chart-4: #af57db;
-  --chart-5: #e23670;
-  
-  /* Sidebar-spezifische Variablen für Dark Mode */
-  --sidebar: #32424e;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #2662d9;
-  --sidebar-primary-foreground: #f8fafc;
-  --sidebar-accent: #1e293b;
-  --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: #1e293b;
-  --sidebar-ring: #cbd5e1;
+.dark {
+  --background: 0 0% 3.9%;
+  --foreground: 0 0% 98%;
+  --card: 0 0% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --primary-foreground: 0 0% 9%;
+  --secondary: 0 0% 14.9%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 0 0% 14.9%;
+  --muted-foreground: 0 0% 63.9%;
+  --accent: 0 0% 14.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 14.9%;
+  --input: 0 0% 14.9%;
+  --ring: 0 0% 83.1%;
+  --chart-1: 220 70% 50%;
+  --chart-2: 160 60% 45%;
+  --chart-3: 30 80% 55%;
+  --chart-4: 280 65% 60%;
+  --chart-5: 340 75% 55%;
+
+  /* Sidebar variables for dark mode */
+  --sidebar: 0 0% 3.9%;
+  --sidebar-foreground: 0 0% 98%;
+  --sidebar-primary: 0 0% 98%;
+  --sidebar-primary-foreground: 0 0% 9%;
+  --sidebar-accent: 0 0% 14.9%;
+  --sidebar-accent-foreground: 0 0% 98%;
+  --sidebar-border: 0 0% 14.9%;
+  --sidebar-ring: 0 0% 83.1%;
 }
 
-/* Dashboard-spezifische Komponenten-Stile */
-/* Diese werden nur angewendet, wenn sie innerhalb von .dashboard-theme liegen */
-/* ACHTUNG: @apply funktioniert hier möglicherweise nicht korrekt! */
-/* Entfernt wegen Build-Fehlern. Utility-Klassen direkt in JSX verwenden. */
-
-/* Dashboard-spezifische Tooltip-Stile */
-.dashboard-theme .custom-tooltip {
-  transition: all 0.2s ease;
-  opacity: 0.95;
+* {
+  border-color: hsl(var(--border));
 }
 
-.dashboard-theme .recharts-tooltip-wrapper {
-  z-index: 1000;
-}
-
-/* Anpassungen für die Sidebar-Zustände - NUR horizontale Expansion */
-html.sidebar-collapsed .content-container {
-  width: calc(100% - var(--sidebar-width-collapsed)) !important;
-  margin-left: var(--sidebar-width-collapsed);
-  transition: width var(--transition-speed) ease-in-out, margin-left var(--transition-speed) ease-in-out;
-}
-
-html:not(.sidebar-collapsed) .content-container {
-  width: calc(100% - var(--sidebar-width-expanded)) !important;
-  margin-left: var(--sidebar-width-expanded);
-  transition: width var(--transition-speed) ease-in-out, margin-left var(--transition-speed) ease-in-out;
-}
-
-/* Horizontale Anpassung des Inhalts */
-html.sidebar-collapsed .w-full {
-  width: 100%;
-  max-width: none;
-  transition: width var(--transition-speed) ease-in-out;
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
