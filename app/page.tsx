@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { DashboardSidebar } from "@/components/dashboard/sidebar"
 import { DisplayCardsAnimated } from "@/components/ui/animated-cards"
 import { Component as PieCharts } from "@/components/dashboard/circle-charts"
 import { DashboardHeader } from "@/components/dashboard/header"
@@ -14,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue 
 } from "@/components/ui/select"
+import { Card, CardContent } from "@/components/ui/card"
 
 // Zeitraum-Optionen für das Dropdown-Menü
 type TimeRange = "today" | "lastWeek" | "lastMonth";
@@ -32,102 +34,111 @@ const agents: Agent[] = [
   { id: "technical", name: "Technical Support" },
 ];
 
-// Diese Seite wird vom DashboardLayout umhüllt
 export default function DashboardPage() {
-  // State für den ausgewählten Zeitraum
+  const [sidebarVisible, setSidebarVisible] = React.useState(true)
   const [timeRange, setTimeRange] = React.useState<TimeRange>("today")
-  
-  // State für den ausgewählten Agent
   const [selectedAgent, setSelectedAgent] = React.useState<string>("all")
   
-  // Funktion zum Aktualisieren des Zeitraums
+  const toggleSidebar = () => {
+    setSidebarVisible(!sidebarVisible)
+  }
+  
   const handleTimeRangeChange = (value: string) => {
     setTimeRange(value as TimeRange);
   }
   
-  // Funktion zum Aktualisieren des ausgewählten Agents
   const handleAgentChange = (value: string) => {
     setSelectedAgent(value);
   }
   
-  // Nur der spezifische Inhalt für /dashboard
   return (
-    // Wrapper mit voller Breite und Abstand
-    <div className="w-full">
-      {/* Header mit Klasse für korrekte Positionierung */}
-      <div className="dashboard-header">
-        <DashboardHeader />
-      </div>
+    <div className="flex min-h-screen bg-background">
+      {/* Sidebar */}
+      <DashboardSidebar 
+        className="dashboard-theme"
+        isVisible={sidebarVisible}
+        onToggle={toggleSidebar}
+      />
       
-      {/* Filter-Bereich */}
-      <div className="pl-4 pr-4 mt-4">
-        {/* Flexbox-Container für beide Dropdown-Menüs */}
-        <div className="flex items-center flex-wrap gap-4">
-          {/* Zeitraum-Auswahl */}
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-foreground">Time Range:</span>
-            <Select value={timeRange} onValueChange={handleTimeRangeChange}>
-              <SelectTrigger className="h-8 w-[150px]">
-                <SelectValue placeholder="Select time range" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="today">Today</SelectItem>
-                <SelectItem value="lastWeek">Last Week</SelectItem>
-                <SelectItem value="lastMonth">Last Month</SelectItem>
-              </SelectContent>
-            </Select>
+      {/* Main content area with proper responsive margins */}
+      <main className={`flex-1 transition-all duration-300 ease-in-out ${
+        sidebarVisible ? 'ml-64' : 'ml-16'
+      }`}>
+        <div className="container mx-auto p-6 max-w-none space-y-6">
+          {/* Dashboard Header with proper Shadcn styling */}
+          <div className="flex items-center justify-between">
+            <DashboardHeader />
           </div>
           
-          {/* Agent-Auswahl */}
-          <div className="flex items-center gap-2">
-            <span className="text-sm font-medium text-foreground">Agent:</span>
-            <Select value={selectedAgent} onValueChange={handleAgentChange}>
-              <SelectTrigger className="h-8 w-[150px]">
-                <SelectValue placeholder="Select an agent" />
-              </SelectTrigger>
-              <SelectContent>
-                {agents.map((agent) => (
-                  <SelectItem key={agent.id} value={agent.id}>
-                    {agent.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-      </div>
-      
-      {/* Inhalt mit voller Breite und linksbündig */}
-      <div className="w-full pl-4 pr-4 mt-8">
-        {/* Alle drei Charts nebeneinander in einem Grid mit fester Höhe */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8" style={{ height: '420px' }}>
-          {/* Kreisdiagramm mit fester Höhe */}
-          <div style={{ height: '420px', maxHeight: '420px', overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: '100%' }}>
-              <RadialCharts timeRange={timeRange} agentId={selectedAgent} />
-            </div>
+          {/* Filter Controls with proper Card styling */}
+          <Card className="border border-border bg-card">
+            <CardContent className="p-4">
+              <div className="flex items-center flex-wrap gap-4">
+                {/* Zeitraum-Auswahl */}
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-foreground">Time Range:</span>
+                  <Select value={timeRange} onValueChange={handleTimeRangeChange}>
+                    <SelectTrigger className="h-9 w-[150px] border-input bg-background">
+                      <SelectValue placeholder="Select time range" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="today">Today</SelectItem>
+                      <SelectItem value="lastWeek">Last Week</SelectItem>
+                      <SelectItem value="lastMonth">Last Month</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                {/* Agent-Auswahl */}
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-medium text-foreground">Agent:</span>
+                  <Select value={selectedAgent} onValueChange={handleAgentChange}>
+                    <SelectTrigger className="h-9 w-[150px] border-input bg-background">
+                      <SelectValue placeholder="Select an agent" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {agents.map((agent) => (
+                        <SelectItem key={agent.id} value={agent.id}>
+                          {agent.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          {/* Charts Grid with proper responsive design */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            {/* Radial Charts */}
+            <Card className="border border-border bg-card">
+              <CardContent className="p-6 h-[420px]">
+                <RadialCharts timeRange={timeRange} agentId={selectedAgent} />
+              </CardContent>
+            </Card>
+            
+            {/* Circle Charts */}
+            <Card className="border border-border bg-card">
+              <CardContent className="p-6 h-[420px]">
+                <PieCharts timeRange={timeRange} agentId={selectedAgent} />
+              </CardContent>
+            </Card>
+            
+            {/* Pie Chart */}
+            <Card className="border border-border bg-card">
+              <CardContent className="p-6 h-[420px]">
+                <PieChart timeRange={timeRange} agentId={selectedAgent} />
+              </CardContent>
+            </Card>
           </div>
           
-          {/* Radial Diagramm mit fester Höhe */}
-          <div style={{ height: '420px', maxHeight: '420px', overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: '100%' }}>
-              <PieCharts timeRange={timeRange} agentId={selectedAgent} />
-            </div>
-          </div>
-          
-          {/* Pie Chart mit fester Höhe */}
-          <div style={{ height: '420px', maxHeight: '420px', overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: '100%' }}>
-              <PieChart timeRange={timeRange} agentId={selectedAgent} />
-            </div>
+          {/* KPI Cards Section */}
+          <div className="space-y-6">
+            <AnimatedGradientDashboard />
           </div>
         </div>
-        
-        {/* Animierte Karten */}
-        <div className="w-full space-y-8">
-          <AnimatedGradientDashboard />
-        </div>
-      </div>
+      </main>
     </div>
   );
 }

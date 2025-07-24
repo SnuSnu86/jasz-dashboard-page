@@ -9,21 +9,22 @@ import { PlusCircle } from 'lucide-react';
  */
 export function DashboardHeader() {
   return (
-    <div className="mb-12 flex items-center">
-      {/* Titel ganz links */}
-      <div>
-        <h1 className="text-3xl md:text-3xl font-bold">Dashboard</h1>
+    <div className="flex items-center justify-between w-full">
+      {/* Titel mit proper Shadcn typography */}
+      <div className="space-y-1">
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">Dashboard</h1>
+        <p className="text-muted-foreground">
+          Manage your AI voice agents and monitor performance
+        </p>
       </div>
       
-      {/* Button ganz rechts - durch ml-auto wird er nach rechts gedrückt */}
-      <div className="ml-auto">
-        <Button asChild>
-          <Link href="/dashboard/create">
-            <PlusCircle className="mr-2 h-5 w-5" />
-            Create new Agent
-          </Link>
-        </Button>
-      </div>
+      {/* Button mit proper Shadcn styling */}
+      <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+        <Link href="/dashboard/create">
+          <PlusCircle className="mr-2 h-4 w-4" />
+          Create new Agent
+        </Link>
+      </Button>
     </div>
   );
 }

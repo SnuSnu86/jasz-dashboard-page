@@ -1,88 +1,88 @@
 /* Dashboard-spezifisches CSS-Modul mit höchster Spezifität */
 
 .dashboardTheme {
-  /* Light Mode Variablen mit !important für höchste Priorität */
-  --background: 0 0% 100% !important;
-  --foreground: 0 0% 3.9% !important;
-  --card: 0 0% 100% !important;
-  --card-foreground: 0 0% 3.9% !important;
-  --popover: 0 0% 100% !important;
-  --popover-foreground: 0 0% 3.9% !important;
-  --primary: 0 0% 9% !important;
-  --primary-foreground: 0 0% 98% !important;
-  --secondary: 0 0% 96.1% !important;
-  --secondary-foreground: 0 0% 9% !important;
-  --muted: 0 0% 96.1% !important;
-  --muted-foreground: 0 0% 45.1% !important;
-  --accent: 0 0% 96.1% !important;
-  --accent-foreground: 0 0% 9% !important;
-  --destructive: 0 84.2% 60.2% !important;
-  --destructive-foreground: 0 0% 98% !important;
-  --border: 0 0% 89.8% !important;
-  --input: 0 0% 89.8% !important;
-  --ring: 0 0% 3.9% !important;
-  --chart-1: 12 76% 61% !important;
-  --chart-2: 173 58% 39% !important;
-  --chart-3: 197 37% 24% !important;
-  --chart-4: 43 74% 66% !important;
-  --chart-5: 27 87% 67% !important;
-  --radius: 0.5rem !important;
-
-  /* Sidebar-spezifische Variablen */
-  --sidebar: 0 0% 100% !important;
-  --sidebar-foreground: 0 0% 3.9% !important;
-  --sidebar-primary: 0 0% 9% !important;
-  --sidebar-primary-foreground: 0 0% 98% !important;
-  --sidebar-accent: 0 0% 96.1% !important;
-  --sidebar-accent-foreground: 0 0% 9% !important;
-  --sidebar-border: 0 0% 89.8% !important;
-  --sidebar-ring: 0 0% 3.9% !important;
-}
-
-/* Dark Mode Variablen für das Dashboard */
-:global(html.dark) .dashboardTheme {
-  --background: #4b5b63 !important;
-  --foreground: #f8fafc !important;
-  --card: #32424e !important;
-  --card-foreground: #f8fafc !important;
-  --popover: #020817 !important;
-  --popover-foreground: #f8fafc !important;
-  --primary: #f8fafc !important;
-  --primary-foreground: #020817 !important;
-  --secondary: #1e293b !important;
-  --secondary-foreground: #020817 !important;
-  --muted: #1e293b !important;
-  --muted-foreground: #94a3b8 !important;
-  --accent: #365063 !important;
-  --accent-foreground: #f8fafc !important;
-  --destructive: #7f1d1d !important;
-  --destructive-foreground: #f8fafc !important;
-  --border: #1e293b !important;
-  --input: #1e293b !important;
-  --ring: #cbd5e1 !important;
-  --chart-1: #2662d9 !important;
-  --chart-2: #2eb88a !important;
-  --chart-3: #e88c30 !important;
-  --chart-4: #af57db !important;
-  --chart-5: #e23670 !important;
-
-  /* Sidebar-spezifische Variablen für Dark Mode */
-  --sidebar: #32424e !important;
-  --sidebar-foreground: #f8fafc !important;
-  --sidebar-primary: #2662d9 !important;
-  --sidebar-primary-foreground: #f8fafc !important;
-  --sidebar-accent: #1e293b !important;
-  --sidebar-accent-foreground: #f8fafc !important;
-  --sidebar-border: #1e293b !important;
-  --sidebar-ring: #cbd5e1 !important;
-}
-
-/* Dashboard-spezifische Komponenten-Stile */
-.customTooltip {
-  transition: all 0.2s ease;
-  opacity: 0.95;
-}
-
-.rechartsTooltipWrapper {
-  z-index: 1000;
-}
+    /* Light Mode Variablen mit !important für höchste Priorität */
+    --background: 0 0% 100% !important;
+    --foreground: 0 0% 3.9% !important;
+    --card: 0 0% 100% !important;
+    --card-foreground: 0 0% 3.9% !important;
+    --popover: 0 0% 100% !important;
+    --popover-foreground: 0 0% 3.9% !important;
+    --primary: 0 0% 9% !important;
+    --primary-foreground: 0 0% 98% !important;
+    --secondary: 0 0% 96.1% !important;
+    --secondary-foreground: 0 0% 9% !important;
+    --muted: 0 0% 96.1% !important;
+    --muted-foreground: 0 0% 45.1% !important;
+    --accent: 0 0% 96.1% !important;
+    --accent-foreground: 0 0% 9% !important;
+    --destructive: 0 84.2% 60.2% !important;
+    --destructive-foreground: 0 0% 98% !important;
+    --border: 0 0% 89.8% !important;
+    --input: 0 0% 89.8% !important;
+    --ring: 0 0% 3.9% !important;
+    --chart-1: 12 76% 61% !important;
+    --chart-2: 173 58% 39% !important;
+    --chart-3: 197 37% 24% !important;
+    --chart-4: 43 74% 66% !important;
+    --chart-5: 27 87% 67% !important;
+    --radius: 0.5rem !important;
+  
+    /* Sidebar-spezifische Variablen */
+    --sidebar: 0 0% 100% !important;
+    --sidebar-foreground: 0 0% 3.9% !important;
+    --sidebar-primary: 0 0% 9% !important;
+    --sidebar-primary-foreground: 0 0% 98% !important;
+    --sidebar-accent: 0 0% 96.1% !important;
+    --sidebar-accent-foreground: 0 0% 9% !important;
+    --sidebar-border: 0 0% 89.8% !important;
+    --sidebar-ring: 0 0% 3.9% !important;
+  }
+  
+  /* Dark Mode Variablen für das Dashboard */
+  :global(html.dark) .dashboardTheme {
+    --background: #4b5b63 !important;
+    --foreground: #f8fafc !important;
+    --card: #32424e !important;
+    --card-foreground: #f8fafc !important;
+    --popover: #020817 !important;
+    --popover-foreground: #f8fafc !important;
+    --primary: #f8fafc !important;
+    --primary-foreground: #020817 !important;
+    --secondary: #1e293b !important;
+    --secondary-foreground: #020817 !important;
+    --muted: #1e293b !important;
+    --muted-foreground: #94a3b8 !important;
+    --accent: #365063 !important;
+    --accent-foreground: #f8fafc !important;
+    --destructive: #7f1d1d !important;
+    --destructive-foreground: #f8fafc !important;
+    --border: #1e293b !important;
+    --input: #1e293b !important;
+    --ring: #cbd5e1 !important;
+    --chart-1: #2662d9 !important;
+    --chart-2: #2eb88a !important;
+    --chart-3: #e88c30 !important;
+    --chart-4: #af57db !important;
+    --chart-5: #e23670 !important;
+  
+    /* Sidebar-spezifische Variablen für Dark Mode */
+    --sidebar: #32424e !important;
+    --sidebar-foreground: #f8fafc !important;
+    --sidebar-primary: #2662d9 !important;
+    --sidebar-primary-foreground: #f8fafc !important;
+    --sidebar-accent: #1e293b !important;
+    --sidebar-accent-foreground: #f8fafc !important;
+    --sidebar-border: #1e293b !important;
+    --sidebar-ring: #cbd5e1 !important;
+  }
+  
+  /* Dashboard-spezifische Komponenten-Stile */
+  .customTooltip {
+    transition: all 0.2s ease;
+    opacity: 0.95;
+  }
+  
+  .rechartsTooltipWrapper {
+    z-index: 1000;
+  }
