@@ -1,5 +1,7 @@
-"use client"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
 
+<<<<<<< HEAD
 import * as React from "react"
 import { DashboardSidebar } from "@/components/dashboard/sidebar"
 import { DisplayCardsAnimated } from "@/components/ui/animated-cards"
@@ -139,6 +141,24 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
+=======
+export default function HomePage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="text-center space-y-6">
+        <h1 className="text-4xl font-bold text-foreground">
+          Welcome to JASZ-AI
+        </h1>
+        <p className="text-xl text-muted-foreground">
+          AI-powered voice agent dashboard
+        </p>
+        <Button asChild>
+          <Link href="/dashboard">
+            Go to Dashboard
+          </Link>
+        </Button>
+      </div>
+>>>>>>> 61f4874390d44fe158b57a189a7bcabca73cb19a
     </div>
-  );
+  )
 }
